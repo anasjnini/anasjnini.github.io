@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anas Jnini</title>
+  <meta name="description" content="Anas Jnini — Scientific Machine Learning Researcher working on PINNs, neural operators, optimization, and CFD." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2f;
+      --panel-2: #18223d;
+      --text: #e8edf7;
+      --muted: #9aa7c2;
+      --accent: #70e1d0;
+      --accent-2: #8ab4ff;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 40px rgba(0,0,0,0.28);
+      --max: 1050px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(112,225,208,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(138,180,255,0.08), transparent 28%),
+        linear-gradient(180deg, #0b1020 0%, #0d1326 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.08;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 18px;
+      max-width: 58ch;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, rgba(112,225,208,0.18), rgba(138,180,255,0.18));
+      border-color: rgba(112,225,208,0.3);
+    }
+
+    .photo-card {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .photo-card img {
+      width: min(100%, 320px);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: #0f172a;
+    }
+
+    .photo-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 12px;
+    }
+
+    .section {
+      padding: 22px 0;
+    }
+
+    .section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .pub-item {
+      padding: 20px;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+    }
+
+    .pub-meta {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.96rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .simple-card {
+      padding: 22px;
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Anas Jnini</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#talks">Talks</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <section class="card hero-card">
+        <div class="eyebrow">Scientific Machine Learning Researcher</div>
+        <h1>Anas Jnini</h1>
+        <p class="subtitle">
+          PhD Candidate at the University of Trento working on physics-informed neural networks,
+          neural operators, optimization, and computational fluid dynamics.
+        </p>
+        <div class="hero-buttons">
+          <a class="button primary" href="CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="button" href="https://scholar.google.com/citations?hl=en&user=8IWteqoAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <a class="button" href="https://github.com/Anasjn2" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="button" href="https://www.linkedin.com/in/anas-j-61684b102/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button" href="https://orcid.org/0009-0006-0551-6155" target="_blank" rel="noopener noreferrer">ORCID</a>
+          <a class="button" href="mailto:anas.jnini@gmail.com">Email</a>
+        </div>
+      </section>
+
+      <aside class="card photo-card">
+        <img src="profile.jpg" alt="Portrait of Anas Jnini" />
+        <div class="photo-note">Replace <code>profile.jpg</code> with your photo file in the repository root.</div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p class="section-intro">
+        My research sits at the intersection of scientific machine learning, physics-constrained modeling,
+        and high-performance computing. I am particularly interested in methods that make PDE-based learning
+        more accurate, stable, and scalable.
+      </p>
+    </section>
+
+    <section class="section" id="research">
+      <h2>Research Interests</h2>
+      <div class="chips">
+        <div class="chip">Scientific Machine Learning</div>
+        <div class="chip">Physics-Informed Neural Networks</div>
+        <div class="chip">Neural Operators</div>
+        <div class="chip">Computational Fluid Dynamics</div>
+        <div class="chip">Optimization Algorithms</div>
+        <div class="chip">High-Performance Computing</div>
+        <div class="chip">Surrogate Modeling</div>
+        <div class="chip">Scientific Computing</div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <h2>Publications &amp; Preprints</h2>
+      <ul class="pub-list">
+        <li class="card pub-item">
+          <div class="pub-title">Gauss-Newton Natural Gradient Descent for Physics-Informed Computational Fluid Dynamics</div>
+          <div class="pub-meta">Computers &amp; Fluids, 2025</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2402.10680" target="_blank" rel="noopener noreferrer">arXiv</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Riemann Tensor Neural Networks: Learning Conservative Systems with Physics-Constrained Networks</div>
+          <div class="pub-meta">ICML 2025</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2503.00755" target="_blank" rel="noopener noreferrer">arXiv</a>
+            <a href="https://openreview.net/forum?id=cPMhMoJLAx&amp;noteId=I8LbqaDsgw" target="_blank" rel="noopener noreferrer">OpenReview</a>
+            <a href="https://github.com/HicrestLaboratory/Riemann-Tensor-Neural-Networks" target="_blank" rel="noopener noreferrer">Code</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Dual Natural Gradient Descent for Scalable Training of Physics-Informed Neural Networks</div>
+          <div class="pub-meta">TMLR, 2025</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2505.21404" target="_blank" rel="noopener noreferrer">arXiv</a>
+            <a href="https://openreview.net/forum?id=GDHVRy6SDd" target="_blank" rel="noopener noreferrer">TMLR / OpenReview</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">cuVegas: Accelerating Multidimensional Monte Carlo Integration: A Parallelized CUDA-based Implementation of the VEGAS Enhanced Algorithm</div>
+          <div class="pub-meta">Under review at ACM Transactions on Mathematical Software, 2024</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2408.09229" target="_blank" rel="noopener noreferrer">arXiv</a>
+            <a href="https://github.com/Anasjn2/cuvegas" target="_blank" rel="noopener noreferrer">Code</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Gradient-Free Homotopy Residual Learning for Fast Training of Nonlinear PDE Surrogates</div>
+          <div class="pub-meta">Under review at ICML, 2026</div>
+          <div class="pub-links">
+            <span style="color: var(--muted);">Public link not available yet</span>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Curvature-Aware Optimization for High-Accuracy Physics-Informed Neural Networks</div>
+          <div class="pub-meta">Preprint submitted to CMAME, 2026</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2604.05230" target="_blank" rel="noopener noreferrer">arXiv</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Workshop Papers &amp; Related Outputs</h2>
+      <ul class="pub-list">
+        <li class="card pub-item">
+          <div class="pub-title">Taylor Mode Neural Operators: Enhancing Computational Efficiency in Physics-Informed Neural Operators</div>
+          <div class="pub-meta">NeurIPS 2024 Workshop on Machine Learning and the Physical Sciences</div>
+          <div class="pub-links">
+            <a href="https://ml4physicalsciences.github.io/2024/files/NeurIPS_ML4PS_2024_128.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+            <a href="https://github.com/HicrestLaboratory/Taylor-Mode-Neural-Operators" target="_blank" rel="noopener noreferrer">Code</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Physics-constrained DeepONet for Surrogate CFD Models: A Curved Backward-Facing Step Case</div>
+          <div class="pub-meta">ICLR 2024 Workshop on AI for Differential Equations in Science</div>
+          <div class="pub-links">
+            <a href="https://openreview.net/forum?id=zRef200Ucc" target="_blank" rel="noopener noreferrer">OpenReview</a>
+            <a href="https://arxiv.org/abs/2503.11196" target="_blank" rel="noopener noreferrer">arXiv</a>
+          </div>
+        </li>
+
+        <li class="card pub-item">
+          <div class="pub-title">Hessian-Free Natural Gradient Descent for Physics Informed Machine Learning</div>
+          <div class="pub-meta">ICLR 2025 withdrawn submission</div>
+          <div class="pub-links">
+            <a href="https://openreview.net/forum?id=Oqk1Ui6m0n" target="_blank" rel="noopener noreferrer">OpenReview</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="talks">
+      <h2>Talks &amp; Activities</h2>
+      <div class="grid-2">
+        <div class="card simple-card">
+          <ul class="clean">
+            <li>Spotlight talk at the CRUNCH Seminar, Brown University — <a href="https://www.youtube.com/watch?v=kWi7qbiuE4g" target="_blank" rel="noopener noreferrer">recording</a></li>
+            <li>Speaker at PINN-PAD: Physics Informed Neural Networks in Padova</li>
+            <li>Poster presentation at MSML 2025</li>
+          </ul>
+        </div>
+        <div class="card simple-card">
+          <ul class="clean">
+            <li>Poster presentation at NeurIPS 2024 Workshop ML4PS</li>
+            <li>Poster presentation at ICLR 2024 Workshop on AI for Differential Equations</li>
+            <li>Visiting researcher appointments at Brown University and Leonardo Labs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="card simple-card">
+        <p>Email: <a href="mailto:anas.jnini@gmail.com">anas.jnini@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/Anasjn2" target="_blank" rel="noopener noreferrer">github.com/Anasjn2</a></p>
+        <p>Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=8IWteqoAAAAJ" target="_blank" rel="noopener noreferrer">profile</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Anas Jnini. Built with GitHub Pages.</div>
+  </footer>
+</body>
+</html>
