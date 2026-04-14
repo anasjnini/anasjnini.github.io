@@ -7,28 +7,30 @@
   <meta name="description" content="Anas Jnini — Scientific Machine Learning Researcher working on PINNs, neural operators, optimization, and CFD." />
   <style>
     :root {
-      --bg: #0b1020;
-      --panel: #121a2f;
-      --panel-2: #18223d;
-      --text: #e8edf7;
-      --muted: #9aa7c2;
-      --accent: #70e1d0;
-      --accent-2: #8ab4ff;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 18px 40px rgba(0,0,0,0.28);
-      --max: 1050px;
+      --bg: #0a0f1f;
+      --bg-2: #0f172d;
+      --panel: rgba(18, 26, 47, 0.9);
+      --panel-2: rgba(25, 36, 63, 0.92);
+      --text: #eef2ff;
+      --muted: #a7b2c9;
+      --accent: #7dd3fc;
+      --accent-2: #8b5cf6;
+      --line: rgba(255,255,255,0.09);
+      --shadow: 0 20px 50px rgba(0,0,0,0.32);
+      --maxw: 1100px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(112,225,208,0.08), transparent 30%),
-        radial-gradient(circle at top right, rgba(138,180,255,0.08), transparent 28%),
-        linear-gradient(180deg, #0b1020 0%, #0d1326 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125,211,252,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(139,92,246,0.10), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       line-height: 1.7;
     }
 
@@ -36,33 +38,37 @@
       color: var(--accent);
       text-decoration: none;
     }
+
     a:hover { text-decoration: underline; }
 
     .container {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(var(--maxw), calc(100% - 32px));
       margin: 0 auto;
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11, 16, 32, 0.72);
-      border-bottom: 1px solid var(--border);
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 15, 31, 0.78);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
+      justify-content: space-between;
+      padding: 15px 0;
+      gap: 20px;
     }
 
     .brand {
       font-weight: 700;
+      font-size: 1rem;
       letter-spacing: 0.3px;
       color: var(--text);
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -73,110 +79,121 @@
 
     .nav-links a {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
     }
 
     .hero {
-      padding: 72px 0 30px;
+      padding: 72px 0 28px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 26px;
+      align-items: stretch;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
       box-shadow: var(--shadow);
     }
 
     .hero-card {
-      padding: 34px;
+      padding: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 360px;
     }
 
     .eyebrow {
       color: var(--accent);
-      font-size: 0.95rem;
       text-transform: uppercase;
-      letter-spacing: 1.1px;
-      margin-bottom: 8px;
+      letter-spacing: 1.2px;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1.08;
       margin: 0 0 12px;
+      font-size: clamp(2.4rem, 4vw, 4.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
     }
 
     .subtitle {
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin: 0 0 18px;
+      margin: 0;
       max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 11px 15px;
+      justify-content: center;
+      padding: 11px 16px;
       border-radius: 999px;
-      border: 1px solid var(--border);
       background: var(--panel);
       color: var(--text);
+      border: 1px solid var(--line);
       font-weight: 600;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+      border-color: rgba(125,211,252,0.28);
     }
 
     .button.primary {
-      background: linear-gradient(135deg, rgba(112,225,208,0.18), rgba(138,180,255,0.18));
-      border-color: rgba(112,225,208,0.3);
+      background: linear-gradient(135deg, rgba(125,211,252,0.18), rgba(139,92,246,0.16));
+      border-color: rgba(125,211,252,0.22);
     }
 
-    .photo-card {
-      padding: 24px;
-      text-align: center;
+    .photo-wrap {
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 360px;
     }
 
-    .photo-card img {
-      width: min(100%, 320px);
+    .photo-wrap img {
+      width: 100%;
+      max-width: 360px;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 24px;
-      border: 1px solid var(--border);
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: #10182d;
       box-shadow: var(--shadow);
-      background: #0f172a;
     }
 
-    .photo-note {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 12px;
+    section {
+      padding: 26px 0;
     }
 
-    .section {
-      padding: 22px 0;
-    }
-
-    .section h2 {
-      font-size: 1.7rem;
-      margin-bottom: 14px;
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.72rem;
+      letter-spacing: -0.02em;
     }
 
     .section-intro {
       color: var(--muted);
-      max-width: 70ch;
-      margin-bottom: 16px;
+      max-width: 74ch;
+      margin: 0 0 18px;
     }
 
     .chips {
@@ -186,11 +203,11 @@
     }
 
     .chip {
-      padding: 10px 13px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
       border-radius: 999px;
       background: rgba(255,255,255,0.04);
       color: var(--text);
-      border: 1px solid var(--border);
       font-size: 0.95rem;
     }
 
@@ -203,28 +220,28 @@
     }
 
     .pub-item {
-      padding: 20px;
+      padding: 20px 22px;
     }
 
     .pub-title {
+      font-size: 1.06rem;
       font-weight: 700;
-      font-size: 1.05rem;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .pub-meta {
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .pub-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       font-size: 0.96rem;
     }
 
-    .grid-2 {
+    .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
@@ -234,30 +251,34 @@
       padding: 22px;
     }
 
-    ul.clean {
+    .clean-list {
       margin: 0;
       padding-left: 20px;
     }
 
-    footer {
-      padding: 28px 0 46px;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .clean-list li + li {
+      margin-top: 10px;
     }
 
-    @media (max-width: 860px) {
-      .hero-grid, .grid-2 {
-        grid-template-columns: 1fr;
-      }
+    footer {
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
 
-      .nav-inner {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-col {
+        grid-template-columns: 1fr;
       }
 
       .hero {
         padding-top: 42px;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -271,6 +292,7 @@
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#talks">Talks</a>
+        <a href="#industry">Industry</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -286,7 +308,7 @@
           neural operators, optimization, and computational fluid dynamics.
         </p>
         <div class="hero-buttons">
-          <a class="button primary" href="CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="button primary" href="CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
           <a class="button" href="https://scholar.google.com/citations?hl=en&user=8IWteqoAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
           <a class="button" href="https://github.com/Anasjn2" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="button" href="https://www.linkedin.com/in/anas-j-61684b102/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -295,24 +317,24 @@
         </div>
       </section>
 
-      <aside class="card photo-card">
-        <img src="profile.jpg" alt="Portrait of Anas Jnini" />
-        <div class="photo-note">Replace <code>profile.jpg</code> with your photo file in the repository root.</div>
+      <aside class="card photo-wrap">
+        <img src="profile.jpg" alt="Anas Jnini" />
       </aside>
     </div>
   </header>
 
   <main class="container">
-    <section class="section" id="about">
+    <section id="about">
       <h2>About</h2>
       <p class="section-intro">
-        My research sits at the intersection of scientific machine learning, physics-constrained modeling,
-        and high-performance computing. I am particularly interested in methods that make PDE-based learning
-        more accurate, stable, and scalable.
+        I am a PhD Candidate at the University of Trento working in scientific machine learning,
+        with a focus on physics-informed neural networks, neural operators, optimization, and
+        computational fluid dynamics. My research aims to develop accurate, stable, and scalable
+        learning methods for physics-based systems.
       </p>
     </section>
 
-    <section class="section" id="research">
+    <section id="research">
       <h2>Research Interests</h2>
       <div class="chips">
         <div class="chip">Scientific Machine Learning</div>
@@ -326,7 +348,7 @@
       </div>
     </section>
 
-    <section class="section" id="publications">
+    <section id="publications">
       <h2>Publications &amp; Preprints</h2>
       <ul class="pub-list">
         <li class="card pub-item">
@@ -368,9 +390,6 @@
         <li class="card pub-item">
           <div class="pub-title">Gradient-Free Homotopy Residual Learning for Fast Training of Nonlinear PDE Surrogates</div>
           <div class="pub-meta">Under review at ICML, 2026</div>
-          <div class="pub-links">
-            <span style="color: var(--muted);">Public link not available yet</span>
-          </div>
         </li>
 
         <li class="card pub-item">
@@ -383,7 +402,7 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section>
       <h2>Workshop Papers &amp; Related Outputs</h2>
       <ul class="pub-list">
         <li class="card pub-item">
@@ -414,38 +433,54 @@
       </ul>
     </section>
 
-    <section class="section" id="talks">
-      <h2>Talks &amp; Activities</h2>
-      <div class="grid-2">
+    <section id="industry">
+      <h2>Industry Experience</h2>
+      <div class="two-col">
         <div class="card simple-card">
-          <ul class="clean">
-            <li>Spotlight talk at the CRUNCH Seminar, Brown University — <a href="https://www.youtube.com/watch?v=kWi7qbiuE4g" target="_blank" rel="noopener noreferrer">recording</a></li>
-            <li>Speaker at PINN-PAD: Physics Informed Neural Networks in Padova</li>
-            <li>Poster presentation at MSML 2025</li>
+          <ul class="clean-list">
+            <li><strong>Leonardo Labs</strong> — Visiting Researcher, 2025</li>
+            <li><strong>Akkodis</strong> — Aerospace Engineer, 2022</li>
           </ul>
         </div>
         <div class="card simple-card">
-          <ul class="clean">
-            <li>Poster presentation at NeurIPS 2024 Workshop ML4PS</li>
-            <li>Poster presentation at ICLR 2024 Workshop on AI for Differential Equations</li>
-            <li>Visiting researcher appointments at Brown University and Leonardo Labs</li>
+          <ul class="clean-list">
+            <li><strong>ATR Aircraft</strong> — Aerospace Simulation Engineer Intern, 2020</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section id="talks">
+      <h2>Talks &amp; Activities</h2>
+      <div class="two-col">
+        <div class="card simple-card">
+          <ul class="clean-list">
+            <li>Speaker at PINN-PAD: Physics Informed Neural Networks in Padova</li>
+            <li>Poster presentation at MSML 2025</li>
+            <li>Poster presentation at NeurIPS 2024 Workshop ML4PS</li>
+          </ul>
+        </div>
+        <div class="card simple-card">
+          <ul class="clean-list">
+            <li>Poster presentation at ICLR 2024 Workshop on AI for Differential Equations</li>
+            <li>Research talks and workshop presentations in scientific machine learning and CFD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
       <h2>Contact</h2>
       <div class="card simple-card">
         <p>Email: <a href="mailto:anas.jnini@gmail.com">anas.jnini@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/Anasjn2" target="_blank" rel="noopener noreferrer">github.com/Anasjn2</a></p>
-        <p>Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=8IWteqoAAAAJ" target="_blank" rel="noopener noreferrer">profile</a></p>
+        <p>GitHub: <a href="https://github.com/anasjnini" target="_blank" rel="noopener noreferrer">github.com/Anasjn2</a></p>
+        <p>Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=8IWteqoAAAAJ" target="_blank" rel="noopener noreferrer">Profile</a></p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© 2026 Anas Jnini. Built with GitHub Pages.</div>
+    <div class="container">© 2026 Anas Jnini</div>
   </footer>
 </body>
 </html>
